@@ -30,7 +30,6 @@ student_Max = Student("Max",210)
 student_Max.print_info()
 
 
-
-
-
-
+a = 2
+b = 3
+print(a+b)
