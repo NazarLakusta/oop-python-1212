@@ -1,3 +1,6 @@
+print("Hi")
+
+
 def function():
     pass
 
