@@ -57,6 +57,8 @@ class Student:
         print("\n")
 
 
+    def eat(self):
+        pass
     def live(self,day):
 
         # live_cube = randint(1,3)
