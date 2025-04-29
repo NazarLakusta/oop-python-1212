@@ -115,7 +115,17 @@ class Human:
         print()
 
     def is_alive(self):
-        pass
+        if self.gladness <= 0:
+            print("Depression....")
+            return False
+
+        if self.satiety < 0:
+            print("Dead...")
+            return False
+
+        if self.money < -500:
+            print("Bankrupt...")
+            return False
 
     def live(self, day):
         pass
