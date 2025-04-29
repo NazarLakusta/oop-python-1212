@@ -36,7 +36,7 @@ class Human:
                 return
 
             self.satiety += 5
-            self.food -= 5
+            self.home.food -= 5
 
     def work(self):
 
@@ -128,7 +128,62 @@ class Human:
             return False
 
     def live(self, day):
-        pass
+
+        if self.is_alive() == False:
+            return False
+
+        if self.home is None:
+            print("Settled in the house")
+            self.get_home()
+
+        if self.car is None:
+            self.get_car()
+            print(f"I bought a car {self.car.brand}")
+
+        if self.job is None:
+            self.get_job()
+            print(f"I have a job {self.job.job}")
+
+
+        self.days_index(day)
+
+        dice = randint(1,4)
+
+        if self.satiety < 20:
+            print("I'll go eat")
+            self.eat()
+
+        elif self.gladness < 20:
+                if self.home.mess > 15:
+                    print("I go cleaning home")
+                    self.clean_home()
+                else:
+                    print("Let's chill")
+                    self.chill()
+
+        elif self.money < 0 :
+            print("Start Working")
+            self.work()
+
+        elif self.car.strength < 15:
+            print("I need to repair my car")
+            self.to_repair()
+
+        elif dice == 1:
+            print("Let's chill!")
+            self.chill()
+
+        elif dice == 2:
+            print("Start Work")
+            self.work()
+
+        elif dice == 3:
+            print("CLeaning time!")
+            self.clean_home()
+
+        elif dice == 4:
+            print("Treats!")
+            self.shopping(manage="delicacies")
 
 
 class Auto:
@@ -177,3 +232,12 @@ job_list = {
     "Photoshop creator": {"salary": 30, "gladness_less": 25},
     "C++ creator": {"salary": 60, "gladness_less": 30},
 }
+
+
+
+
+nazar = Human("Nazar")
+
+for day in range (1,365):
+    if nazar.live(day) == False:
+        break
