@@ -80,21 +80,39 @@ class Human:
 
         elif manage == "delicacies":
             print("Hoorrayy! Delicious!")
-            self.gladness+=10
+            self.gladness += 10
             self.satiety += 2
             self.money -= 15
 
     def chill(self):
-        pass
+        self.gladness += 10
+        self.home.mess += 5
 
     def clean_home(self):
-        pass
+        self.gladness -= 5
+        self.home.mess = 0
 
     def to_repair(self):
-        pass
+        self.car.strength += 100
+        self.money -= 50
 
     def days_index(self, day):
-        pass
+        print(f"Today the {day} of {self.name}'s life")
+        print(f"Money - {self.money}")
+        print(f"Satiety - {self.satiety}")
+        print(f"Gladness - {self.gladness} ")
+        print()
+        print("-" * 50)
+        print("Home")
+        print(f"Food  - {self.home.food}")
+        print(f"Mess  - {self.home.mess}")
+        print()
+        print("-" * 50)
+        print("Car")
+        print(f"Fuel  - {self.car.fuel}")
+        print(f"Strength - {self.car.strength}")
+        print()
+        print()
 
     def is_alive(self):
         pass
