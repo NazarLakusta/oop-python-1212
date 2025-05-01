@@ -1,11 +1,13 @@
+# батьківським
 class Grandparent:
     height = 170
     satiety = 100
     age = 60
 
 
+# дочірній
 class Parent(Grandparent):
-    age = 40
+    age = 35
 
 
 class Child(Parent):
