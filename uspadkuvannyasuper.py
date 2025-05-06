@@ -24,7 +24,7 @@ class Worker(Human):
 
     def info(self):
         super().info()
-        print(f"Worker info:"
+        print(f"\nWorker info:"
               f"\nSalary: {self.salary}"
               f"\nPosition: {self.position}"
               f"\nExperience: {self.experience}")
@@ -32,6 +32,6 @@ class Worker(Human):
 
 nazar = Human("Nazar",175,21,"Black")
 nazar.info()
-
+print()
 ruslan = Worker("Ruslan",180,13,"Brown",1,"Potuzhnist",1)
 ruslan.info()
