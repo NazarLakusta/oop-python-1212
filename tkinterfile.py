@@ -86,11 +86,45 @@ def add_game():
 
 
 def remove_game():
-    pass
+    selected = game_listbox.curselection()
+    if selected:
+        title = game_listbox.get(selected[0].split(" ("))[0]
+
+        if library.remove_game(title):
+            update_game_list()
+        else:
+            messagebox.showerror("Помилка","Гру не знайдено!")
+
+    else:
+        messagebox.showerror("Помилка", "Оберіть гру для видалення!")
+
 
 def view_game_details():
-    pass
+    selected = game_listbox.curselection()
+    if selected:
+        title = game_listbox.get(selected[0].split(" ("))[0]
+        game = library.get_game_by_title(title)
 
+        if game:
+            detail_window = tk.Toplevel(window)
+            detail_window.title(f"Інформація про {game.title}")
+
+            info = (
+                f"Назва: {game.title}\n"
+                f"Жанр: {game.genre}\n"
+                f"Платформа: {game.platform}\n"
+                f"Рік: {game.year}\n"
+                f"Опис: {game.description}\n"
+            )
+
+            label = tk.Label(detail_window, text = info, justify="left")
+            label.pack(padx=10,pady=10)
+
+        else:
+            messagebox.showerror("Помилка", "Інформацію не знайдено!")
+
+    else:
+        messagebox.showerror("Помилка", "Оберіть гру для видалення!")
 
 
 window = tk.Tk()
