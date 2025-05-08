@@ -102,7 +102,7 @@ def remove_game():
 def view_game_details():
     selected = game_listbox.curselection()
     if selected:
-        title = game_listbox.get(selected[0].split(" ("))[0]
+        title = game_listbox.get(selected[0]).split(" (")[0]
         game = library.get_game_by_title(title)
 
         if game:
