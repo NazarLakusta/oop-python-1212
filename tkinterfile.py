@@ -89,10 +89,29 @@ platform_var.set(platform_options[0])
 tk.OptionMenu(window,platform_var,*platform_options).pack()
 
 
+tk.Label(window,text="Рік випуску:").pack()
+year_entry = tk.Entry(window)
+year_entry.pack()
 
 
+tk.Label(window,text="Опис гри:").pack()
+description_text = tk.Text(window,height=4,width=40)
+description_text.pack()
+
+tk.Button(window, text = "Додати гру", command=add_game).pack(pady=2)
+tk.Button(window, text = "Видалити гру", command=remove_game).pack(pady=2)
+tk.Button(window, text = "Переглянути гру", command=view_game_details).pack(pady=2)
 
 
+tk.Label(window,text = "Фільтр за жанром:").pack()
+genre_filter_var = tk.StringVar()
+genre_filter_var.set("Усі")
+tk.OptionMenu(window,genre_filter_var,"Усі",*genre_options, command=lambda _: update_game_list()).pack()
 
+
+tk.Label(window,text = "Фільтр за платформою:").pack()
+platform_filter_var = tk.StringVar()
+platform_filter_var.set("Усі")
+tk.OptionMenu(window,platform_filter_var,"Усі",*platform_options, command=lambda _: update_game_list()).pack()
 
 window.mainloop()
