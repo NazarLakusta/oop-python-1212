@@ -53,10 +53,37 @@ class GameLibrary:
 
 
 def update_game_list():
-        pass
+        game_listbox.delete(0, tk.END)
+        genre_filter = genre_filter_var.get()
+        platform_filter = platform_filter_var.get()
+        games = library.filter_games(genre_filter,platform_filter)
+
+        for game in games:
+            game_listbox.insert(tk.END,f"{game.title} ({game.platform})")
 
 def add_game():
-    pass
+     title = title_entry.get()
+     genre = genre_var.get()
+     platform = platform_var.get()
+     year = year_entry.get()
+     description = description_text.get("1.0",tk.END).strip()
+
+     if not title or not year:
+         messagebox.showerror("Помилка","Назва та рік - обовязкові!")
+         return
+
+     game = Game(title,genre,platform,year,description)
+     library.add_game(game)
+     update_game_list()
+
+     #Очищення
+     title_entry.delete(0,tk.END)
+     year_entry.delete(0,tk.END)
+     genre_var.set(genre_options[0])
+     platform_var.set(platform_options[0])
+     description_text.delete("1.0",tk.END)
+
+
 
 def remove_game():
     pass
@@ -113,5 +140,11 @@ tk.Label(window,text = "Фільтр за платформою:").pack()
 platform_filter_var = tk.StringVar()
 platform_filter_var.set("Усі")
 tk.OptionMenu(window,platform_filter_var,"Усі",*platform_options, command=lambda _: update_game_list()).pack()
+
+game_listbox = tk.Listbox(window, width=50,height=10)
+game_listbox.pack(pady=10)
+
+
+update_game_list()
 
 window.mainloop()
