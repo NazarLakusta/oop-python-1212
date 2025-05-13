@@ -22,7 +22,7 @@ class Person:
             print("Ріст занадто низький. Випий растішку!")
 
     def drink_rastishka(self):
-        print(f"{self.name} Випис растішку")
+        print(f"{self.name} Випив растішку")
         self.__height += 15
 
 p = Person("Іван",22,180)
