@@ -41,7 +41,7 @@ class HotelBookingApp:
         self.rooms_list = tk.Listbox(self.tab_rooms, font = ("Arial",12))
         self.rooms_list.pack(pady=10,fill = "both" , expand = True)
 
-        self.update_room_list()
+        self.update_rooms_list()
 
         self.booking_label = tk.Label(self.tab_booking, text="Введіть номер кімнати:")
         self.booking_label.pack(pady=10)

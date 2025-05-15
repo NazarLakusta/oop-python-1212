@@ -14,7 +14,7 @@ class Room:
         return False
 
     def unbook(self):
-        self._is_booked == False
+        self._is_booked = False
 
 
     def is_available(self):
