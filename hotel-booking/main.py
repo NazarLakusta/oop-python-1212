@@ -1,10 +1,7 @@
-from .gui.app import HotelBookingApp
 import tkinter as tk
 
-def main():
+if __name__ == "__main__":
     root = tk.Tk()
     app = HotelBookingApp(root)
-    root.mainloop()
 
-if __name__ == "main":
-    main()
+    root.mainloop()
