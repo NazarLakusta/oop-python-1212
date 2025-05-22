@@ -37,10 +37,32 @@ conn.commit()
 
 
 
+
+
+
+print("STUDENT")
+cursor.execute("SELECT * FROM students")
+for row in cursor.fetchall():
+    print(row)
+
+print()
+
+print("GROUPS")
+cursor.execute("SELECT * FROM groups")
+for row in cursor.fetchall():
+    print(row)
+
+
+
+print("STUDENT IN GROUPS")
+cursor.execute('''SELECT students.name, groups.name FROM students
+JOIN groups ON students.group_id = groups.id''')
+for row in cursor.fetchall():
+    print(row)
+
+
 # Видалення значень у таблиці
 cursor.execute("DELETE FROM students")
 cursor.execute("DELETE FROM groups")
 conn.commit()
-
-
 conn.close()
